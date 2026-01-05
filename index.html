@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jessica Montgomery | Full-Stack Software Engineer</title>
+  <meta name="description" content="One-page software engineering portfolio: full-stack projects, GitHub/GitLab repos, and downloads." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --muted:#9fb0d0;
+      --text:#eef2ff;
+      --accent:#7c5cff;
+      --accent2:#26d6a3;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 10%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(700px 450px at 80% 20%, rgba(38,214,163,.18), transparent 55%),
+        radial-gradient(800px 500px at 50% 110%, rgba(124,92,255,.15), transparent 60%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.92}
+    .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,16,32,.55);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px; max-width:var(--max); margin:0 auto;}
+    .brand{display:flex; flex-direction:column; gap:2px}
+    .brand strong{font-size:14px; letter-spacing:.3px}
+    .brand span{font-size:12px; color:var(--muted)}
+    .nav-links{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:flex-end}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border:1px solid var(--border);
+      background: rgba(18,26,51,.65);
+      border-radius:999px;
+      font-size:12px;
+    }
+    .pill.primary{
+      border-color: rgba(124,92,255,.55);
+      background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(18,26,51,.65));
+    }
+    .pill .dot{width:8px; height:8px; border-radius:50%; background:var(--accent2); box-shadow:0 0 0 3px rgba(38,214,163,.12)}
+    .hero{
+      padding:52px 0 18px;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; padding-top:28px}
+    }
+    .card{
+      background: rgba(18,26,51,.70);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero-main{padding:28px}
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      color:var(--muted); font-size:12px; letter-spacing:.35px; text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    .kicker .bar{width:22px; height:2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius:10px}
+    h1{margin:0 0 10px; font-size:40px; line-height:1.1}
+    @media (max-width: 520px){h1{font-size:34px}}
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:15px;
+      max-width: 62ch;
+    }
+    .cta-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:16px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:11px 14px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(11,16,32,.35);
+      font-size:13px;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,92,255,.28), rgba(38,214,163,.16));
+      border-color: rgba(124,92,255,.55);
+    }
+    .btn .icon{
+      width:10px; height:10px; border-radius:3px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+    .hero-side{padding:22px; display:flex; flex-direction:column; gap:12px}
+    .stat{
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(11,16,32,.35);
+    }
+    .stat strong{display:block; font-size:13px}
+    .stat span{display:block; margin-top:4px; color:var(--muted); font-size:12px}
+    .section{padding:22px 0}
+    .section h2{font-size:18px; margin:0 0 10px}
+    .section p{margin:0; color:var(--muted)}
+    .skills{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:14px;
+    }
+    .chip{
+      display:inline-flex;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(18,26,51,.55);
+      font-size:12px;
+      color: #d8e3ff;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    .project{
+      grid-column: span 6;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    @media (max-width: 900px){
+      .project{grid-column: span 12}
+    }
+    .project-top{display:flex; justify-content:space-between; gap:12px; align-items:flex-start}
+    .project h3{margin:0; font-size:16px}
+    .project .meta{color:var(--muted); font-size:12px; margin-top:3px}
+    .stack{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .thumb{
+      width:100%;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(124,92,255,.16), rgba(38,214,163,.10)),
+        rgba(11,16,32,.35);
+      min-height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:rgba(255,255,255,.65);
+      font-size:12px;
+      text-align:center;
+      padding:14px;
+    }
+    ul{margin:0; padding-left:18px; color:var(--muted); font-size:13px}
+    li{margin:6px 0}
+    .links{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
+    .link{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; color:#eaf0ff;
+      padding:8px 10px;
+      border-radius: 12px;
+      border:1px solid var(--border);
+      background: rgba(11,16,32,.30);
+    }
+    .link .tag{
+      font-size:10px;
+      padding:2px 6px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      color:rgba(255,255,255,.75);
+    }
+    .case{
+      padding:22px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 900px){.case{grid-template-columns:1fr}}
+    .case .box{
+      padding:16px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(11,16,32,.35);
+    }
+    .case h3{margin:0 0 10px; font-size:16px}
+    .case p{margin:0; color:var(--muted); font-size:13px}
+    .footer{
+      padding:24px 0 60px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .divider{height:1px; background:var(--border); margin:18px 0}
+    .sr-only{position:absolute; left:-9999px}
+  </style>
+</head>
+
+<body>
+  <!-- Sticky Nav -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <strong>Jessica Montgomery</strong>
+        <span>Full-Stack Software Engineer</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="pill" href="#projects">Projects</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#case-study">Case Study</a>
+        <a class="pill primary" href="#contact"><span class="dot"></span>Contact</a>
+
+        <!-- Update these when you want -->
+        <a class="pill" href="https://github.com/jessmonty" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="pill" href="https://gitlab.com/wgu-gitlab-environment/student-repos/jmon634" target="_blank" rel="noreferrer" title="Add your GitLab profile link">GitLab</a>
+        <a class="pill" href="#" target="_blank" rel="noreferrer" title="Link your resume PDF">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="card hero-main">
+        <div class="kicker"><span class="bar"></span><span>Full-Stack • Clean Architecture • Shipping Mindset</span></div>
+        <h1>Building reliable, user-friendly apps end-to-end.</h1>
+        <p class="sub">
+          I’m a full-stack software engineer who enjoys turning complex requirements into maintainable systems.
+          I care about readable code, thoughtful architecture, testing, and documentation so projects are easy to run and extend.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#projects"><span class="icon"></span>View Projects</a>
+          <a class="btn" href="#case-study"><span class="icon"></span>See Case Study</a>
+          <a class="btn" href="#contact"><span class="icon"></span>Get in Touch</a>
+        </div>
+      </div>
+
+      <aside class="card hero-side" aria-label="Highlights">
+        <div class="stat">
+          <strong>Focus</strong>
+          <span>Full-stack development • APIs • Databases • Mobile/UX awareness</span>
+        </div>
+        <div class="stat">
+          <strong>Strengths</strong>
+          <span>Clear documentation • Practical tooling • Testing mindset</span>
+        </div>
+        <div class="stat">
+          <strong>Tooling</strong>
+          <span>GitHub/GitLab • Gradle • JUnit • CI-friendly workflows</span>
+        </div>
+        <div class="stat">
+          <strong>Open to</strong>
+          <span>Full-stack SWE roles • Collaboration • Code reviews</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <p>Quick scan of the tools and concepts I use most.</p>
+
+      <div class="skills" aria-label="Skill tags">
+        <span class="chip">Java</span>
+        <span class="chip">REST APIs</span>
+        <span class="chip">SQL / Relational Data</span>
+        <span class="chip">Git (GitHub + GitLab)</span>
+        <span class="chip">Gradle</span>
+        <span class="chip">JUnit</span>
+        <span class="chip">Documentation (README / Markdown)</span>
+        <span class="chip">Debugging &amp; Troubleshooting</span>
+        <span class="chip">Clean Architecture (layering, separation of concerns)</span>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <h2>Projects</h2>
+      <p>Selected projects across full-stack, backend, and mobile release delivery.</p>
+
+      <div class="grid" role="list">
+        <!-- Project 1: Capstone -->
+        <article class="card project" role="listitem">
+          <div class="project-top">
+            <div>
+              <h3>Software Engineering Capstone — Vacation Planner (Mobile)</h3>
+              <div class="meta">Release download + project landing</div>
+            </div>
+            <span class="chip" aria-label="Category">Capstone</span>
+          </div>
+
+         
+
+          <div class="stack" aria-label="Tech stack">
+            <span class="chip">Android</span>
+            <span class="chip">Java</span>
+            <span class="chip">Room / Persistence</span>
+            <span class="chip">Gradle</span>
+            <span class="chip">JUnit</span>
+          </div>
+
+          <ul>
+            <li>Designed a mobile workflow for planning trips with clear, user-friendly navigation.</li>
+            <li>Used structured data + persistence patterns to keep the app reliable and maintainable.</li>
+            <li>Packaged and published a release artifact for easy reviewer testing.</li>
+          </ul>
+
+          <div class="links">
+            <a class="link" href="https://jmon634.github.io/vacation-planner-mobile-app/app-release.apk" target="_blank" rel="noreferrer">
+              Download APK <span class="tag">Release</span>
+            </a>
+            
+            <a class="link" href="https://gitlab.com/wgu-gitlab-environment/student-repos/jmon634/d308-mobile-application-development-android.git" title="Add repo link for this project">
+              Repo
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 2: Java Frameworks -->
+        <article class="card project" role="listitem">
+          <div class="project-top">
+            <div>
+              <h3>Java Frameworks Project</h3>
+              <div class="meta">Course project demonstrating framework-based development</div>
+            </div>
+            <span class="chip" aria-label="Host">GitLab</span>
+          </div>
+
+          
+
+          <div class="stack" aria-label="Tech stack">
+            <span class="chip">Java</span>
+            <span class="chip">Frameworks</span>
+            <span class="chip">Build tooling</span>
+            <span class="chip">API patterns</span>
+          </div>
+
+          <ul>
+            <li>Implemented structured application components using Java frameworks patterns.</li>
+            <li>Focused on maintainability: clear responsibilities and consistent project structure.</li>
+            <li>Documented setup and usage so reviewers can run the project quickly.</li>
+          </ul>
+
+          <div class="links">
+            <a class="link" href="https://gitlab.com/wgu-gitlab-environment/student-repos/jmon634/d287-java-frameworks.git" target="_blank" rel="noreferrer">
+              GitLab Repo <span class="tag">Code</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 3: Back-end Programming -->
+        <article class="card project" role="listitem">
+          <div class="project-top">
+            <div>
+              <h3>Back-End Programming Project</h3>
+              <div class="meta">Backend services + data handling patterns</div>
+            </div>
+            <span class="chip" aria-label="Host">GitLab</span>
+          </div>
+
+         
+
+          <div class="stack" aria-label="Tech stack">
+            <span class="chip">Java</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">Database</span>
+            <span class="chip">Validation</span>
+          </div>
+
+          <ul>
+            <li>Built backend functionality with a focus on clean, predictable API behavior.</li>
+            <li>Handled data operations with attention to correctness and error handling.</li>
+            <li>Organized code for readability and future extension.</li>
+          </ul>
+
+          <div class="links">
+            <a class="link" href="https://gitlab.com/wgu-gitlab-environment/student-repos/jmon634/d288-back-end-programming.git" target="_blank" rel="noreferrer">
+              GitLab Repo <span class="tag">Code</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 4: Full-stack Banking App -->
+        <article class="card project" role="listitem">
+          <div class="project-top">
+            <div>
+              <h3>Full-Stack Banking App</h3>
+              <div class="meta">End-to-end app: UI + backend + data</div>
+            </div>
+            <span class="chip" aria-label="Host">GitHub</span>
+          </div>
+
+          
+
+          <div class="stack" aria-label="Tech stack">
+            <span class="chip">Full-Stack (Express, MongoDB, React, and NodeJS)</span>
+            <span class="chip">APIs</span>
+            <span class="chip">Database</span>
+            <span class="chip">Auth / Security Concepts</span>
+          </div>
+
+          <ul>
+            <li>Designed a full-stack workflow connecting a user interface to backend services.</li>
+            <li>Implemented core application flows and structured data interactions.</li>
+            <li>Organized the codebase to support future features and clearer debugging.</li>
+          </ul>
+
+          <div class="links">
+            <a class="link" href="https://github.com/jessmonty/Full-stack-bank-app.git" target="_blank" rel="noreferrer">
+              GitHub Repo <span class="tag">Code</span>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Case Study -->
+    <section class="section" id="case-study">
+      <h2>Mini Case Study: Vacation Planner Capstone</h2>
+      <p>A quick deep-dive to show how I think through implementation and tradeoffs.</p>
+
+      <div class="card case">
+        <div class="box">
+          <h3>Problem &amp; Constraints</h3>
+          <p>
+            Create a mobile experience for planning and organizing trips, while keeping the project maintainable and
+            easy to demo for reviewers. Shipping a working release artifact was a priority.
+          </p>
+          <div style="height:10px"></div>
+          <h3>Approach</h3>
+          <p>
+            I focused on clean separation of concerns, predictable user flows, and reliable persistence.
+            Documentation and tooling (build + testing) were treated as part of the deliverable.
+          </p>
+        </div>
+
+        <div class="box">
+          <h3>Key Decisions</h3>
+          <ul>
+            <li><strong>Maintainability:</strong> structured components and consistent project organization.</li>
+            <li><strong>Reliability:</strong> use persistence patterns to avoid data loss and support offline use.</li>
+            <li><strong>Reviewability:</strong> published an installable APK for straightforward testing.</li>
+          </ul>
+          <div style="height:10px"></div>
+         
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <h2>About</h2>
+      <p>
+        I enjoy building end-to-end systems where the UI, APIs, and database design work together cleanly.
+        I value readable code, practical tooling, and documentation that helps the next developer (or reviewer) run the project quickly.
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <p>Best way to reach me: email or LinkedIn.</p>
+
+      <div class="cta-row" style="margin-top:14px">
+        <a class="btn primary" href="mailto:jessmonty13@gmail.com"><span class="icon"></span>Email Me</a>
+        <a class="btn" href="https://www.linkedin.com/in/jess-montgomery" target="_blank" rel="noreferrer" title="Add your LinkedIn link"><span class="icon"></span>LinkedIn</a>
+        <a class="btn" href="https://github.com/jessmonty" target="_blank" rel="noreferrer"><span class="icon"></span>GitHub</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="divider"></div>
+      <div>© <span id="y"></span> Jessica Montgomery • Built as a single-file GitHub Pages site</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
